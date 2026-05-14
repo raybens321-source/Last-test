@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acta Leads — We Fill Your Pipeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ec;
+  --black:#0e0e0e;
+  --ink:#1a1a1a;
+  --mid:#6b6560;
+  --accent:#e8412a;
+  --accent2:#f5f2ec;
+  --border:#dedad3;
+  --card:#ffffff;
+  --radius:14px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Instrument Sans',sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3.5rem;
+  background:rgba(245,242,236,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.7rem;letter-spacing:0.04em;
+  color:var(--black);text-decoration:none;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:var(--mid);text-decoration:none;
+  font-size:0.85rem;font-weight:500;
+  letter-spacing:0.02em;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--black);color:var(--bg);
+  padding:0.6rem 1.4rem;border-radius:100px;
+  font-size:0.85rem;font-weight:600;
+  text-decoration:none;transition:all 0.2s;
+  letter-spacing:0.02em;
+}
+.nav-cta:hover{background:var(--accent)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:9rem 3.5rem 5rem;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:4rem;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.hero-left{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:1.8rem;
+}
+.hero-eyebrow::before{
+  content:'';width:24px;height:2px;background:var(--accent);
+}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4.5rem,9vw,9rem);
+  line-height:0.92;
+  letter-spacing:0.02em;
+  color:var(--black);
+  margin-bottom:2rem;
+}
+.hero h1 span{color:var(--accent)}
+.hero-sub{
+  font-size:1.05rem;color:var(--mid);
+  max-width:500px;line-height:1.75;
+  margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  padding:0.85rem 1.8rem;border-radius:100px;
+  font-size:0.9rem;font-weight:600;
+  text-decoration:none;transition:all 0.2s;
+  letter-spacing:0.02em;
+}
+.btn-primary:hover{background:#c8321d;transform:translateY(-1px)}
+.btn-outline{
+  background:transparent;color:var(--ink);
+  padding:0.85rem 1.8rem;border-radius:100px;
+  font-size:0.9rem;font-weight:500;
+  text-decoration:none;transition:all 0.2s;
+  border:1.5px solid var(--border);
+}
+.btn-outline:hover{border-color:var(--ink)}
+
+/* HERO RIGHT CARD */
+.hero-card{
+  background:var(--black);
+  border-radius:20px;
+  padding:2.5rem;
+  color:#fff;
+}
+.hero-card-title{
+  font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:1.5rem;
+}
+.hero-card-stat{
+  margin-bottom:1.5rem;
+  padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.hero-card-stat:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.hero-card-stat .num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;letter-spacing:0.03em;
+  color:var(--accent);line-height:1;margin-bottom:0.2rem;
+}
+.hero-card-stat p{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+.hero-card-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(232,65,42,0.15);
+  border:1px solid rgba(232,65,42,0.3);
+  color:var(--accent);
+  padding:0.5rem 1rem;border-radius:100px;
+  font-size:0.75rem;font-weight:600;margin-top:1.5rem;
+}
+.hero-card-badge::before{
+  content:'';width:6px;height:6px;
+  background:var(--accent);border-radius:50%;
+  animation:blink 1.5s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+/* TICKER */
+.ticker{
+  background:var(--black);padding:0.85rem 0;
+  overflow:hidden;white-space:nowrap;
+}
+.ticker-inner{display:inline-block;animation:tick 25s linear infinite}
+.ticker-inner span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.95rem;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.4);padding:0 2rem;
+}
+.ticker-inner span.hot{color:var(--accent)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* WHO WE SERVE */
+.serve{padding:6rem 3.5rem;border-bottom:1px solid var(--border)}
+.serve-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap;
+}
+.label{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:1;letter-spacing:0.02em;
+  color:var(--black);
+}
+.serve-sub{
+  max-width:380px;font-size:0.95rem;
+  color:var(--mid);line-height:1.7;
+  padding-bottom:0.5rem;
+}
+.serve-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+.serve-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:2rem;
+  transition:all 0.25s;
+  cursor:default;
+}
+.serve-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.07)}
+.serve-card-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--bg);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;margin-bottom:1.2rem;
+}
+.serve-card h3{
+  font-weight:600;font-size:1rem;margin-bottom:0.5rem;
+}
+.serve-card p{font-size:0.85rem;color:var(--mid);line-height:1.7}
+.serve-card .examples{
+  margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:0.4rem;
+}
+.chip{
+  background:var(--bg);border:1px solid var(--border);
+  color:var(--mid);padding:0.2rem 0.7rem;
+  border-radius:100px;font-size:0.72rem;font-weight:500;
+}
+.serve-card.primary-card{
+  background:var(--black);border-color:var(--black);color:#fff;
+  grid-column:span 1;
+}
+.serve-card.primary-card p{color:rgba(255,255,255,0.5)}
+.serve-card.primary-card .chip{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.5)}
+.serve-card.primary-card .serve-card-icon{background:rgba(232,65,42,0.15);border-color:rgba(232,65,42,0.2)}
+.now-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--accent);color:#fff;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.2rem 0.7rem;border-radius:100px;margin-bottom:0.8rem;
+}
+
+/* HOW IT WORKS */
+.how{
+  padding:6rem 3.5rem;
+  background:var(--black);
+  color:#fff;
+  border-bottom:1px solid #1e1e1e;
+}
+.how .label{color:var(--accent)}
+.how .section-title{color:#fff}
+.how-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  margin-top:4rem;align-items:start;
+}
+.how-steps{}
+.how-step{
+  display:flex;gap:1.5rem;
+  padding:1.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.how-step:last-child{border-bottom:none}
+.how-step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;
+  color:var(--accent);flex-shrink:0;width:2rem;
+  letter-spacing:0.04em;
+}
+.how-step h3{font-weight:600;font-size:1rem;margin-bottom:0.4rem}
+.how-step p{font-size:0.875rem;color:rgba(255,255,255,0.45);line-height:1.7}
+.how-right{}
+.how-card{
+  background:#161616;border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:2rem;margin-bottom:1rem;
+}
+.how-card h4{font-weight:600;font-size:0.9rem;margin-bottom:0.4rem}
+.how-card p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.6}
+.how-card-label{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.6rem;
+}
+.example-box{
+  background:#111;border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;padding:1.5rem;
+  font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7;
+}
+.example-box strong{color:#fff;font-weight:600}
+
+/* PRICING */
+.pricing{padding:6rem 3.5rem;border-bottom:1px solid var(--border)}
+.pricing-header{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  margin-bottom:4rem;align-items:end;
+}
+.pricing-header p{font-size:0.95rem;color:var(--mid);line-height:1.75}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.p-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:2.5rem;
+  position:relative;transition:all 0.25s;
+}
+.p-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.07)}
+.p-card.featured{background:var(--black);border-color:var(--black);color:#fff}
+.p-type{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+.p-card.featured .p-type{color:rgba(255,255,255,0.35)}
+.p-price{
+  font-family:'Bebas Neue',sans-serif;font-size:3.5rem;
+  letter-spacing:0.02em;line-height:1;margin-bottom:0.4rem;
+  color:var(--black);
+}
+.p-card.featured .p-price{color:var(--accent)}
+.p-price sub{font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:400;color:var(--mid)}
+.p-card.featured .p-price sub{color:rgba(255,255,255,0.35)}
+.p-desc{font-size:0.82rem;color:var(--mid);margin-bottom:2rem;line-height:1.6}
+.p-card.featured .p-desc{color:rgba(255,255,255,0.4)}
+.p-divider{height:1px;background:var(--border);margin-bottom:1.5rem}
+.p-card.featured .p-divider{background:rgba(255,255,255,0.08)}
+.p-features{list-style:none;margin-bottom:2rem}
+.p-features li{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  font-size:0.875rem;padding:0.45rem 0;
+  color:var(--ink);
+}
+.p-card.featured .p-features li{color:rgba(255,255,255,0.7)}
+.p-features li::before{
+  content:'✓';color:var(--accent);font-weight:700;
+  flex-shrink:0;margin-top:1px;
+}
+.p-btn{
+  display:block;text-align:center;padding:0.85rem;
+  border-radius:100px;font-size:0.875rem;font-weight:600;
+  text-decoration:none;transition:all 0.2s;letter-spacing:0.02em;
+}
+.p-btn-dark{background:var(--black);color:#fff}
+.p-btn-dark:hover{background:var(--accent)}
+.p-btn-accent{background:var(--accent);color:#fff}
+.p-btn-accent:hover{background:#c8321d}
+.p-combo-note{
+  grid-column:span 2;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.p-combo-note p{font-size:0.875rem;color:var(--mid);line-height:1.6;max-width:600px}
+.p-combo-note strong{color:var(--ink)}
+
+/* WHY US */
+.why{
+  padding:6rem 3.5rem;
+  background:var(--accent);
+  color:#fff;
+}
+.why .section-title{color:#fff}
+.why .label{color:rgba(255,255,255,0.6)}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;
+}
+.why-item{
+  border-top:1px solid rgba(255,255,255,0.3);
+  padding-top:1.5rem;
+}
+.why-item h3{font-weight:600;font-size:1.05rem;margin-bottom:0.6rem}
+.why-item p{font-size:0.875rem;color:rgba(255,255,255,0.7);line-height:1.7}
+
+/* CTA */
+.cta{
+  padding:8rem 3.5rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+.cta h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,7vw,7rem);
+  letter-spacing:0.02em;line-height:0.95;
+  color:var(--black);margin-bottom:1.5rem;
+}
+.cta h2 span{color:var(--accent)}
+.cta p{
+  font-size:1rem;color:var(--mid);
+  max-width:420px;margin:0 auto 2.5rem;line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  background:var(--black);
+  padding:2rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;
+  letter-spacing:0.04em;color:#fff;
+}
+.footer-logo span{color:var(--accent)}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.25)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}
+.fade-up.d2{transition-delay:0.2s}
+.fade-up.d3{transition-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem;gap:3rem}
+  .hero-card{display:none}
+  .serve-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr;gap:3rem}
+  .pricing-header{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .p-combo-note{grid-column:1}
+  .why-grid{grid-template-columns:1fr}
+  section,
+  .serve,.how,.pricing,.why,.cta{padding:4rem 1.5rem}
+  footer{padding:2rem 1.5rem}
+  nav{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">ACTA<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#serve">Who we serve</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="#pricing" class="nav-cta">Work with us</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Sales prospecting, done for you</div>
+    <h1>We fill<br>your<br><span>pipeline.</span></h1>
+    <p class="hero-sub">Acta Leads is a dedicated outbound prospecting service for marketing agencies. We cold call, qualify, and book clients on your behalf — you focus on delivering, we focus on finding.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">See pricing →</a>
+      <a href="#how" class="btn-outline">How it works</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">What you get</div>
+    <div class="hero-card-stat">
+      <div class="num">100%</div>
+      <p>Pay only when we deliver a qualified lead or signed client</p>
+    </div>
+    <div class="hero-card-stat">
+      <div class="num">0</div>
+      <p>Hours spent on cold outreach by your team</p>
+    </div>
+    <div class="hero-card-stat">
+      <div class="num">Flat fee<br><span style="font-size:1.5rem">+ %</span></div>
+      <p>Per lead + % of first month's contract value</p>
+    </div>
+    <div class="hero-card-badge">Taking new clients now</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="hot">Marketing agencies</span><span>Cold outreach</span><span>Qualified leads</span>
+    <span>Booking calls</span><span class="hot">Signed clients</span><span>Pipeline growth</span>
+    <span>Outbound prospecting</span><span class="hot">No retainer needed</span><span>Results only</span>
+    <span class="hot">Marketing agencies</span><span>Cold outreach</span><span>Qualified leads</span>
+    <span>Booking calls</span><span class="hot">Signed clients</span><span>Pipeline growth</span>
+    <span>Outbound prospecting</span><span class="hot">No retainer needed</span><span>Results only</span>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section id="serve" class="serve">
+  <div class="serve-header">
+    <div>
+      <div class="label">Who we serve</div>
+      <div class="section-title">Built for<br>agencies first.</div>
+    </div>
+    <p class="serve-sub">We started with marketing agencies because they understand the value of a lead — and they have the capacity to convert them. Expansion to other industries comes next.</p>
+  </div>
+  <div class="serve-grid">
+    <div class="serve-card primary-card fade-up">
+      <div class="now-badge">Available now</div>
+      <div class="serve-card-icon">📣</div>
+      <h3>Marketing agencies</h3>
+      <p>You do great work but hate prospecting. We call businesses on your behalf, pitch your services, and hand you qualified, interested leads ready to talk.</p>
+      <div class="examples">
+        <span class="chip">Social media agencies</span>
+        <span class="chip">Full-service agencies</span>
+        <span class="chip">SEO firms</span>
+        <span class="chip">Content studios</span>
+      </div>
+    </div>
+    <div class="serve-card fade-up d1">
+      <div class="serve-card-icon">🎬</div>
+      <h3>Creative professionals</h3>
+      <p>Videographers, photographers, designers — we call real estate agents, developers, and brands on your behalf and book you more shoots and projects.</p>
+      <div class="examples">
+        <span class="chip">Videographers</span>
+        <span class="chip">Photographers</span>
+        <span class="chip">Graphic designers</span>
+      </div>
+    </div>
+    <div class="serve-card fade-up d2">
+      <div class="serve-card-icon">🍽</div>
+      <h3>Hospitality & trades</h3>
+      <p>Private chefs, caterers, builders — we secure more bookings and projects by reaching out directly to event planners, venues, and developers.</p>
+      <div class="examples">
+        <span class="chip">Private chefs</span>
+        <span class="chip">Caterers</span>
+        <span class="chip">Builders</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how">
+  <div class="label">How it works</div>
+  <div class="section-title">Simple process.<br>Real results.</div>
+  <div class="how-grid">
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="how-step-num">01</div>
+        <div>
+          <h3>You onboard us</h3>
+          <p>Tell us who your ideal client is, what you charge, and what makes you different. We learn your agency inside out before we make a single call.</p>
+        </div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">02</div>
+        <div>
+          <h3>We build your prospect list</h3>
+          <p>We research and compile a list of businesses that match your ideal client profile — the right size, right industry, right budget.</p>
+        </div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">03</div>
+        <div>
+          <h3>We call on your behalf</h3>
+          <p>Our team makes outbound calls, pitches your agency, handles objections, and qualifies leads — all representing your brand professionally.</p>
+        </div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">04</div>
+        <div>
+          <h3>You get the lead or booking</h3>
+          <p>When a prospect is qualified and interested, we hand them directly to you — warm, briefed, and ready to talk. You close the deal.</p>
+        </div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">05</div>
+        <div>
+          <h3>You pay on results</h3>
+          <p>Flat fee per qualified lead delivered, plus a percentage of the first month's contract value when they sign. No results, no full payment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="how-right">
+      <div class="how-card">
+        <div class="how-card-label">What a qualified lead looks like</div>
+        <h4>Decision-maker confirmed</h4>
+        <p>We only pass leads where we've spoken to the actual owner or decision-maker — not a receptionist or middle manager.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-label">What a qualified lead looks like</div>
+        <h4>Interest confirmed</h4>
+        <p>They've expressed genuine interest in your service, not just agreed to "maybe" hear more. They know the price range and still want to proceed.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-label">What a qualified lead looks like</div>
+        <h4>Call booked or warm handoff</h4>
+        <p>Either a discovery call is booked directly in your calendar, or we do a live warm transfer to your team right then and there.</p>
+      </div>
+      <div class="example-box">
+        <strong>Example:</strong> You run a social media agency. We call 200 local businesses in your city, pitch your $1,500/month package, qualify 12 interested prospects, and book 12 discovery calls directly into your calendar. You pay a flat fee per call booked, plus 10% of the first month's value for each one that signs.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="pricing-header">
+    <div>
+      <div class="label">Pricing</div>
+      <div class="section-title">Pay for<br>results.</div>
+    </div>
+    <p>No monthly retainer. No lock-in. You pay a flat fee per qualified lead we deliver, plus a percentage of the first month's contract value when that lead converts to a paying client. Skin in the game — for both of us.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="p-card fade-up">
+      <div class="p-type">Per qualified lead</div>
+      <div class="p-price">$150<sub>–$300</sub></div>
+      <div class="p-desc">Flat fee per qualified lead handed to you — confirmed decision-maker, genuine interest, call booked.</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>Outbound calling on your behalf</li>
+        <li>Prospect list research included</li>
+        <li>Decision-maker qualification</li>
+        <li>Discovery call booked in your calendar</li>
+        <li>Lead brief provided with every handoff</li>
+        <li>Weekly activity report</li>
+      </ul>
+      <a href="mailto:hello@actaleads.com" class="p-btn p-btn-dark">Get started</a>
+    </div>
+    <div class="p-card featured fade-up d1">
+      <div class="p-type">Conversion bonus</div>
+      <div class="p-price">10%<sub> of month 1</sub></div>
+      <div class="p-desc">When a lead we deliver converts to a signed client, we take 10% of their first month's contract value — on top of the lead fee.</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>Only applies when lead converts</li>
+        <li>Calculated on first month's value only</li>
+        <li>No ongoing commission after month 1</li>
+        <li>Transparent tracking provided</li>
+        <li>Incentivises us to send quality leads</li>
+        <li>You keep 100% from month 2 onwards</li>
+      </ul>
+      <a href="mailto:hello@actaleads.com" class="p-btn p-btn-accent">Work with us</a>
+    </div>
+    <div class="p-combo-note fade-up">
+      <p><strong>Combined example:</strong> We deliver 10 qualified leads at $200 each = $2,000. Three convert at $2,000/month each. Conversion bonus = 10% × $6,000 = $600. Total you pay Acta: <strong>$2,600</strong>. Revenue gained: <strong>$6,000/month ongoing.</strong></p>
+      <a href="mailto:hello@actaleads.com" class="btn-primary" style="white-space:nowrap;flex-shrink:0">Let's talk →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ACTA -->
+<section class="why">
+  <div class="label">Why Acta Leads</div>
+  <div class="section-title">We only win<br>when you win.</div>
+  <div class="why-grid">
+    <div class="why-item fade-up">
+      <h3>No retainer risk</h3>
+      <p>You don't pay us a flat monthly fee for effort. You pay for qualified leads and conversions. If we don't deliver, you don't pay full price.</p>
+    </div>
+    <div class="why-item fade-up d1">
+      <h3>We represent your brand</h3>
+      <p>Every call is made as your agency. We learn your pitch, your tone, your offer. Prospects never know it's us — they experience you.</p>
+    </div>
+    <div class="why-item fade-up d2">
+      <h3>You stay focused on delivery</h3>
+      <p>Your team does what they're best at — the actual marketing work. We handle the part most agencies hate: filling the top of the funnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to<br>stop <span>chasing</span><br>clients?</h2>
+  <p>Book a free 20-minute call. We'll map out your ideal client profile and tell you exactly how many leads we can realistically deliver.</p>
+  <a href="mailto:hello@actaleads.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.2rem">Book a free strategy call →</a>
+</section>
+
+<footer>
+  <div class="footer-logo">ACTA<span>.</span></div>
+  <p>Sales prospecting for marketing agencies</p>
+  <p>© 2026 Acta Leads</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
